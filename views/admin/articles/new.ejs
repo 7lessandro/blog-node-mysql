@@ -1,0 +1,26 @@
+<!--Header-->
+<%- include ('../../partials/header.ejs') %>
+
+<!--Navbar-->
+<%- include ('../../partials/navbar.ejs') %>
+
+<div class="container">
+    <div class="card">
+        <br>
+    <div class="card-header">
+        <h2 class="text-center text-uppercase">New article</h2>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="/categories/save">
+            <input class="form-control" type="text" name="title" placeholder="Article title">
+            <br>
+            <textarea class="form-control" placeholder="Write the article here..." name="body"></textarea>
+            <br>
+            <button class="btn btn-success">Create</button>
+        </form>
+    </div>
+    </div>
+</div>
+
+<!--Footer-->
+<%- include ('../../partials/footer.ejs') %>

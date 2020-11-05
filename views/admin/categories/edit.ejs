@@ -11,9 +11,9 @@
         <h2 class="text-center text-uppercase">Edit categories</h2>
     </div>
     <div class="card-body">
-        <form method="GET" action="/categories/save">
+        <form method="POST" action="/categories/update">
             <input class="form-control" type="text" name="title" placeholder="Title of category" value="<%= category.title %>">
-            <br>
+            <input type="hidden" name="id" value="<%= category.id %>">
             <button class="btn btn-success">Update</button>
         </form>
     </div>

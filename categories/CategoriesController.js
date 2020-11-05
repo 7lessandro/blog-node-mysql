@@ -8,7 +8,7 @@ const Category = require('./Category');
 //Router
 router.get('/admin/categories/new', (req, res) => {
     res.render('admin/categories/new')
-})
+});
 
 router.post('/categories/save', (req, res) => {
     var title = req.body.title;
@@ -24,13 +24,13 @@ router.post('/categories/save', (req, res) => {
     } else {
         res.redirect('/admin/categories/new')
     }
-})
+});
 
 router.get('/admin/categories', (req, res) => {
     Category.findAll().then(categories => {
         res.render('admin/categories/index', {categories: categories})
     })
-})
+});
 
 router.post('/categories/delete', (req, res) => {
     var id = req.body.id;
@@ -49,7 +49,7 @@ router.post('/categories/delete', (req, res) => {
     } else { //if is null
         res.redirect('/admin/categories')
     }
-})
+});
 
 router.get('/admin/categories/edit/:id', (req, res) => {
     var id = req.params.id;
@@ -67,6 +67,19 @@ router.get('/admin/categories/edit/:id', (req, res) => {
     }).catch( error => {
         res.redirect('/admin/categories')
     })
-})
+});
+
+router.post('/categories/update', (req, res) => {
+    var id = req.body.id;
+    var title = req.body.title;
+
+    Category.update({title: title, slug: slugify(title)}, {
+        where: {
+            id: id
+        }
+    }).then(() => {
+    res.redirect('/admin/categories')
+    })
+});
 
 module.exports = router;
