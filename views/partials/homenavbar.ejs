@@ -8,5 +8,13 @@
             <a class="nav-link" href="/" >Home</a>
         </li>
 
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <% categories.forEach(category => { %>
+          <a class="dropdown-item" href="/"><%= category.title %></a>
+          <% }) %>
+        </div>
+      </li>
     </ul>
 </nav>
