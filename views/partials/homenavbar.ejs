@@ -12,7 +12,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <% categories.forEach(category => { %>
-          <a class="dropdown-item" href="/"><%= category.title %></a>
+          <a class="dropdown-item" href="/category/<%= category.slug %>"><%= category.title %></a>
           <% }) %>
         </div>
       </li>
