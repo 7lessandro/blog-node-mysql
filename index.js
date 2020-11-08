@@ -39,6 +39,7 @@ app.get("/", (req, res) => {
   Article.findAll({
     include: [{ model: Category }],
     order: [["id", "DESC"]],
+    limit: 4
   }).then((articles) => {
     Category.findAll().then((categories) => {
       res.render("index", { articles: articles, categories: categories });
