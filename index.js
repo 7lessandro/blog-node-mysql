@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require("express-session");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
@@ -15,6 +16,11 @@ const User = require("./users/User");
 
 //View Engine
 app.set("view engine", "ejs");
+
+//Session Config
+app.use(session({
+    secret: "Qualquer coisa", cookie: { maxAge: 10000 }
+}))
 
 //Body-Parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,6 +43,27 @@ connection
 app.use("/", categoriesController);
 app.use("/", articlesController);
 app.use("/", usersController);
+
+//Session Rotes
+app.get("/session", (req, res) => {
+  req.session.nome = "Alessandro",
+  req.session.email = "alessandroascencio@outlook.com",
+  req.session.team = {
+    João: "Java",
+    Pedro: "Python",
+    Telma: "Elixir"
+  }
+  res.send("Sessão Gerada com Sucesso =)")
+
+})
+
+app.get("/leitura", (req, res) => {
+  res.json({
+    nome: req.session.nome,
+    email: req.session.email,
+    team: req.session.team
+  })
+})
 
 app.get("/", (req, res) => {
   Article.findAll({
