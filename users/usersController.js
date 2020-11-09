@@ -16,6 +16,7 @@ router.get('/admin/users/create', (req, res) => {
 })
 
 router.post('/admin/users/create', (req, res) => {
+    var username = req.body.username
     var email = req.body.email;
     var password = req.body.password;
 
@@ -31,6 +32,7 @@ router.post('/admin/users/create', (req, res) => {
 
             User.create({
                 email: email,
+                username: username,
                 password: hash
             }).then(() => {
                 res.redirect('/')

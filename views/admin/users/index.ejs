@@ -7,13 +7,14 @@
 <div class="container">
     <hr>
     <h2>Users</h2>
-    <a href="#" class="btn btn-success">Create new user
+    <a href="/admin/users/create" class="btn btn-success">Create new user
     </a>
     <hr>
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Username</th>
                 <th>E-mail</th>
                 <th class="text-center">Actions</th>
                 
@@ -23,14 +24,15 @@
             <% users.forEach(user => { %>
                 <tr>
                     <th><%= user.id %></th>
+                    <th><%= user.username %></th>
                     <th><%= user.email %></th>
                     <th class="text-center">
                         <a href="#" class="btn btn-warning">Edit</a>
 
-                        <form method="POST" action="/categories/delete" style="display:inline" onsubmit="confirmDelete(event, this)">
+                        <!--<form method="POST" action="" style="display:inline" onsubmit="confirmDelete(event, this)">
                             <input type="hidden" name="id" value="<%= user.id %>">
                             <button class="btn btn-danger">Delete</button>
-                        </form>
+                        </form> !-->
                     </th>
                 </tr>
 
