@@ -19,7 +19,7 @@ app.set("view engine", "ejs");
 
 //Session Config
 app.use(session({
-    secret: "Qualquer coisa", cookie: { maxAge: 10000 }
+    secret: "Qualquer coisa", cookie: { maxAge: 30000 }
 }))
 
 //Body-Parser
@@ -44,16 +44,16 @@ app.use("/", categoriesController);
 app.use("/", articlesController);
 app.use("/", usersController);
 
-//Session Rotes
-app.get("/session", (req, res) => {
-  req.session.nome = "Alessandro",
-  req.session.email = "alessandroascencio@outlook.com",
+//Session Rotes Example
+/*app.get("/session", (req, res) => {
+  req.session.nome = "ale",
+  req.session.email = "email@email.com",
   req.session.team = {
-    João: "Java",
-    Pedro: "Python",
-    Telma: "Elixir"
+    skill_1: "Java",
+    skill_2: "Python",
+    skill_3: "Elixir"
   }
-  res.send("Sessão Gerada com Sucesso =)")
+  res.send("Sessão gerada...")
 
 })
 
@@ -63,7 +63,7 @@ app.get("/leitura", (req, res) => {
     email: req.session.email,
     team: req.session.team
   })
-})
+})*/
 
 app.get("/", (req, res) => {
   Article.findAll({
